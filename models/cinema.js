@@ -13,21 +13,22 @@ Cinema.prototype.getFilmTitles = function () {
 };
 
 Cinema.prototype.getFilmByTitle = function (filmTitle){
-  // const result = this.films.some((films) => {
-  //   film.title === filmTitle;
+  const result = this.films.find((film) => {
+    return film.title === filmTitle;
     
 
-  // })
-  // console.log(result)
-
-  let result;
-  for (const film of this.films) {
-    if (filmTitle === film.title){
-      result = film;
-    }
-
-  }
+  })
+  console.log(result)
   return result;
+
+  // let result;
+  // for (const film of this.films) {
+  //   if (filmTitle === film.title){
+  //     result = film;
+  //   }
+
+  // }
+  // return result;
 }
 
 Cinema.prototype.filterFilmByGenre = function (genre){
@@ -39,12 +40,12 @@ Cinema.prototype.filterFilmByGenre = function (genre){
 } 
 
 Cinema.prototype.filterFilmByYear = function(year){
-  let result = this.films.filter((film) => {
+  let result = this.films.some((film) => {
     return film.year === year;
   })
-  if (result.length === 0){
-    result = "There are no films from that year! :-)"
-  }
+  // if (result.length === 0){
+  //   result = "There are no films from that year! :-)"
+  // }
   console.log(result);
   return result;
 };
@@ -61,7 +62,7 @@ Cinema.prototype.getTotalRunTime = function(){
   const result = this.films.reduce((runningTotal, filmRunTime) => {
     return runningTotal + filmRunTime.length;
 
-  } )
+  },0 )
   return result
 }
 
